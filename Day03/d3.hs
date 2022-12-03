@@ -3,7 +3,7 @@ import Data.List
 import Data.Char
 
 main = do
-    input <- lines <$> readFile "input.txt"
+    input <- lines <$> readFile "input2.txt"
     print $  part1 input
     print $  part2 input
 
