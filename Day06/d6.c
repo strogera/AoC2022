@@ -17,13 +17,13 @@ inline uint32_t countOnes(uint32_t x)
 
 int main()
 {
-    FILE *f = fopen("input.txt", "r");
+    FILE *f = fopen("bigboy.txt", "r");
     char cur[L1];
     memset(&cur, getc(f), sizeof(char) * L1);
     char cur2[L2];
     int i = 1;
     uint32_t x = 0u;
-    while (x != L1)
+    while (countOnes(x) != L1)
     {
         x = 0u;
         cur[i++ % L1] = getc(f);
@@ -31,14 +31,13 @@ int main()
         {
             x |= 1u << cur[j] % 32;
         }
-        x = countOnes(x);
     }
     printf("%d\n", i);
     for (int j = i; (i - j) < L1; --j)
     {
         cur2[j % L2] = cur[i - j];
     }
-    while (x != L2)
+    while (countOnes(x) != L2)
     {
         x = 0u;
         cur2[i++ % L2] = getc(f);
@@ -47,7 +46,6 @@ int main()
         {
             x |= 1u << cur2[j] % 32;
         }
-        x = countOnes(x);
     }
     printf("%d\n", i);
     fclose(f);
