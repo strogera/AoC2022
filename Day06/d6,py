@@ -1,0 +1,8 @@
+with open("input.txt", "r") as inputFile:
+    input = inputFile.read()
+    def getAnswer(s: int):
+        for i in range(len(input)):
+            if len(set(input[i:i + s])) == s:
+                return i + s
+    print(getAnswer(4))
+    print(getAnswer(14))
