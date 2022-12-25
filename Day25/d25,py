@@ -1,0 +1,29 @@
+with open("input.txt", "r") as inputFile:
+    ssum = 0
+    for line in inputFile.read().splitlines():
+        curNum = 0
+        for i, c in enumerate(line[::-1]):
+            if c.isnumeric():
+                curNum += (5**i) * int(c)
+            elif c == '-':
+                curNum -= 1 * (5**i)
+            elif c == '=':
+                curNum -= 2 * (5**i)
+        ssum += curNum
+    s = ssum
+    ans = ""
+    remainder = 0
+    while s != 0:
+        remainder = s % 5
+        if remainder <= 2:
+            ans = str(remainder) + ans
+            s = s // 5
+        elif remainder == 3:
+            ans = '=' + ans
+            s = s // 5 + 1
+        else:
+            ans = '-' + ans
+            s = s // 5 + 1
+    print(ans)
+    print("Click the button on the site for part two")
+    print("Merry Christmas :)")
